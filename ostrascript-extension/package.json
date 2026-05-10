@@ -2,7 +2,7 @@
     "name": "ostrascript",
     "displayName": "Ostrascript",
     "publisher": "Ondřej Honc",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "icon": "icon.png",
     "license": "MIT",
     "keywords": ["ostrava", "programming", "language", "syntax"],
