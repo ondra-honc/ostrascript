@@ -79,8 +79,6 @@ pozdrav("Chachare") pyco
 | `cibit` | `\|` 
 | `laces` | `true` 
 | `bokdepa` | `false` 
-| `chuj` | `null` 
-| `kokot` | `undefined` 
 
 ## Asynchronní robota a chyby
 
@@ -92,6 +90,18 @@ pozdrav("Chachare") pyco
 | `pockej` | `await` 
 | `vythani` | `import`
 | `posly` | `export`
+
+## Typy v Ostrascriptu
+| Ostrascript | JavaScript 
+| :--- | :--- 
+| `dryst` | `string` 
+| `cyslo` | `number` 
+| `lacesnebochuj` | `boolean` 
+| `dynamit` | `any` 
+| `ništ` | `void`
+| `chuj` | `null` 
+| `kokot` | `undefined` 
+
 
 ## Podpora pro editory 
 

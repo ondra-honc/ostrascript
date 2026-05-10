@@ -34,6 +34,11 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `tohle` | `this` | Právě tohle |
 | `vythani` | `import` | Dotáhni to sem |
 | `posly` | `export` | Pošli to dál |
+| `dryst` | `string` 
+| `cyslo` | `number` 
+| `lacesnebochuj` | `boolean` 
+| `dynamit` | `any` 
+| `ništ` | `void`
 
 ## 🛠️ Logické operátory
 

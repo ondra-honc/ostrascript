@@ -27,8 +27,13 @@ const mapping = {
 
     'laces': 'true',
     'bokdepa': 'false',
+    'dryst': 'string',
+    'lacesnebochuj': 'boolean',
+    'cyslo': 'number',
     'chuj': 'null',
     'kokot': 'undefined',
+    'ništ': 'void',
+    'dynamit': 'any',
 
     'rubat': 'while',
 
