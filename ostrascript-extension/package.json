@@ -2,7 +2,7 @@
     "name": "ostrascript",
     "displayName": "Ostrascript",
     "publisher": "Ondřej Honc",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "icon": "icon.png",
     "license": "MIT",
     "keywords": [
@@ -33,7 +33,11 @@
                 "extensions": [
                     ".os"
                 ],
-                "configuration": "./language.json"
+                "configuration": "./language.json",
+                "icon": {
+                    "light": "./logo.svg",
+                    "dark": "./logo.svg"
+                }
             }
         ],
         "grammars": [
