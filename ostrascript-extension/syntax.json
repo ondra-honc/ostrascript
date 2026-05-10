@@ -1,0 +1,41 @@
+{
+    "name": "Ostrascript",
+    "patterns": [
+        {
+            "name": "keyword.control.ostrascript",
+            "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt)\\b"
+        },
+        {
+            "name": "storage.type.ostrascript",
+            "match": "\\b(kalfas|toz|konstatuj|tryda)\\b"
+        },
+        {
+            "name": "keyword.operator.logical.ostrascript",
+            "match": "\\b(aj|ci|ajbit|cibit)\\b"
+        },
+        {
+            "name": "constant.language.ostrascript",
+            "match": "\\b(laces|bokdepa|chuj|kokot)\\b"
+        },
+        {
+            "name": "support.function.ostrascript",
+            "match": "\\b(hovor|rubej)\\b"
+        },
+        {
+            "name": "string.quoted.double.ostrascript",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ostrascript",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        {
+            "name": "comment.line.double-slash.ostrascript",
+            "match": "//.*$"
+        }
+    ],
+    "scopeName": "source.os"
+}

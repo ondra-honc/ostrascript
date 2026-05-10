@@ -1,0 +1,28 @@
+{
+    "name": "ostrascript",
+    "displayName": "Ostrascript",
+    "publisher": "Ondřej Honc",
+    "version": "0.0.2",
+    "icon": "icon.png",
+    "keywords": ["ostrava", "programming", "language", "syntax"],
+    "galleryBanner": {
+        "color": "#C0392B",
+        "theme": "dark"
+    },
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "ostrascript",
+            "aliases": ["Ostrascript", "os"],
+            "extensions": [".os"],
+            "configuration": "./language.json"
+        }],
+        "grammars": [{
+            "language": "ostrascript",
+            "scopeName": "source.os",
+            "path": "./syntax.json"
+        }]
+    }
+}
