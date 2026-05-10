@@ -93,13 +93,27 @@ pozdrav("Chachare") pyco
 | `vythani` | `import`
 | `posly` | `export`
 
-## Podpora pro editory
+## Podpora pro editory 
 
-Pokud nejsi blázen a nepíšeš kód v poznámkovém bloku, tak v adresáři `/ostrascript-extension` najseš podporu pro VS Code.¨
-- Barví klíčová slova
-- Automaticky doplňuje závorky
-- Poznává `.os` soubory
-Instalaci provedeš přes `Install from VSIX` v extension menu.
+Pokud chceš Ostrascript editovat jako pán a mít všechno správně obarvené musíš si zprovoznit extension.
+
+### Příprava vývojového prostředí
+V adresáři `/ostrascript-extension` je potřeba nejdříve stáhnout závislosti, aby fungovalo inteligentní barvení:
+
+1. Otevři terminál v složce extension.
+2. Inicializuj a stáhni moduly:
+   ```bash
+   npm init -y
+   npm install --save-dev typescript vscode-test @types/vscode @types/node
+   ```
+3. Zkompiluj Typescript do Javascriptu:
+   ```bash
+   npm run compile
+   ```
+4. Instalace:
+    - Po té můžeš v adresáři najít hotový  `.vsix` balíček, který potom přes `Install from VSIX` v extension menu stáhneš. Po instalaci se doporučuje restartvoat VS Code.
+
+A pokud tohle nechceš dělat, tak si můžeš rovou stáhnout předpřipravený balíček
 
 ### Kompilace
 Kód v Ostrascriptu převedeš na standardní JavaScript příkazem:
