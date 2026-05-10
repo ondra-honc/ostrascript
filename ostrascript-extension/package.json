@@ -4,6 +4,7 @@
     "publisher": "Ondřej Honc",
     "version": "0.0.2",
     "icon": "icon.png",
+    "license": "MIT",
     "keywords": ["ostrava", "programming", "language", "syntax"],
     "galleryBanner": {
         "color": "#C0392B",
