@@ -1,0 +1,11 @@
+# Závislosti (tohle je největší balík, co nechceš na GitHubu)
+node_modules/
+
+# Zkompilovaný kód
+out/
+
+# Dočasné soubory VS Code a logy
+.vscode-test/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

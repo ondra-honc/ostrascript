@@ -2,28 +2,76 @@
     "name": "ostrascript",
     "displayName": "Ostrascript",
     "publisher": "Ondřej Honc",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "icon": "icon.png",
     "license": "MIT",
-    "keywords": ["ostrava", "programming", "language", "syntax"],
+    "keywords": [
+        "ostrava",
+        "programming",
+        "language",
+        "syntax"
+    ],
     "galleryBanner": {
         "color": "#C0392B",
         "theme": "dark"
     },
     "engines": {
-        "vscode": "^1.50.0"
+        "vscode": "^1.80.0" 
     },
+    "activationEvents": [
+        "onLanguage:ostrascript"
+    ],
+    "main": "./out/extension.js",
     "contributes": {
-        "languages": [{
-            "id": "ostrascript",
-            "aliases": ["Ostrascript", "os"],
-            "extensions": [".os"],
-            "configuration": "./language.json"
-        }],
-        "grammars": [{
-            "language": "ostrascript",
-            "scopeName": "source.os",
-            "path": "./syntax.json"
-        }]
+        "languages": [
+            {
+                "id": "ostrascript",
+                "aliases": [
+                    "Ostrascript",
+                    "os"
+                ],
+                "extensions": [
+                    ".os"
+                ],
+                "configuration": "./language.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ostrascript",
+                "scopeName": "source.os",
+                "path": "./syntax.json"
+            }
+        ],
+        "semanticTokenTypes": [
+            {
+                "id": "parameter",
+                "description": "Parametry funkci a chujstym"
+            }
+        ],
+        "semanticTokenModifiers": [],
+        "semanticTokenScopes": [
+            {
+                "language": "ostrascript",
+                "scopes": {
+                    "parameter": [
+                        "variable.parameter"
+                    ]
+                }
+            }
+        ]
+    },
+    "description": "Nejostřejší rozšíření pro nejostřejší jazyk na světě. Přidává podporu pro syntaxi a barvičky pro soubory .os.",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "type": "commonjs",
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@types/vscode": "^1.80.0",
+        "typescript": "^5.0.0",
+        "vscode-test": "^1.6.1"
     }
 }
