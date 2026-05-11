@@ -8,7 +8,7 @@ if (!inputFile) {
     process.exit(1);
 }
 
-const outputFile = inputFile.replace(/\.os$/, '.js');
+const outputFile = inputFile.replace(/\.os$/, '.ts');
 
 const mapping = {
     'kalfas': 'function',
@@ -32,7 +32,7 @@ const mapping = {
     'cyslo': 'number',
     'chuj': 'null',
     'kokot': 'undefined',
-    'ništ': 'void',
+    'nist': 'void',
     'dynamit': 'any',
 
     'rubat': 'while',

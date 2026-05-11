@@ -38,7 +38,7 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `cyslo` | `number` 
 | `lacesnebochuj` | `boolean` 
 | `dynamit` | `any` 
-| `ništ` | `void`
+| `nist` | `void`
 
 ## 🛠️ Logické operátory
 
@@ -53,7 +53,7 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 1. Nainstaluj tuhle extension.
 2. Vytvoř soubor `moje_robotka.os`.
 3. Píš kód jako chlap.
-4. Použij `compiler.js` k převodu na JavaScript.
+4. Použij `compiler.js` k převodu na TypeScript.
 
 ---
 Vyrobeno s úctou k ostravskému regionu. **Bo neni čas!**

@@ -1,11 +1,11 @@
 # Ostrascript
 
-**Ostrascript** je nejostřejší nadstavba nad JavaScriptem, určená pro ty, co nemají čas na zbytečné kecy kolem webového programování. Zatímco se ostatní patlají s JavaScriptem, ty už máš hotovo, bo píšeš v jazyce, který má řád.
+**Ostrascript** je nejostřejší nadstavba nad JavaScriptem, určená pro ty, co nemají čas na zbytečné kecy kolem webového programování. Zatímco se ostatní patlají s TypeScriptem, ty už máš hotovo, bo píšeš v jazyce, který má řád.
 
 > "Bo na webu neni čas na pičoviny!"
 
 ## Proč Ostrascript?
-JavaScript je dneska všude, ale chybí mu ta správná ocelová nátura. Ostrascript bere to nejlepší z JS a dává tomu ostravský punc. 
+TypeScript je dneska všude, ale chybí mu ta správná ocelová nátura. Ostrascript bere to nejlepší z JS a dává tomu ostravský punc. 
 
 - Žádné `function`, ale **kalfas**.
 - Žádné `return`, ale **fajront**.
@@ -13,7 +13,7 @@ JavaScript je dneska všude, ale chybí mu ta správná ocelová nátura. Ostras
 
 ## Příklad ##
 Zde je takový průměrný JavaScriptový program:
-```javascript
+```typescript
 async function nactiData(url) {
     try {
         let data = await console.log(url) ;
@@ -33,7 +33,7 @@ pozdrav("Chachare") ;
 ```
 
 Ale takhle by vypadal v inovativním jazyku pro ostraváky:
-```javascript
+```typescript
 fofrem kalfas nactiData(url) {
     zkus {
         toz data = pockej hovor(url) pyco
@@ -98,7 +98,7 @@ pozdrav("Chachare") pyco
 | `cyslo` | `number` 
 | `lacesnebochuj` | `boolean` 
 | `dynamit` | `any` 
-| `ništ` | `void`
+| `nist` | `void`
 | `chuj` | `null` 
 | `kokot` | `undefined` 
 
@@ -126,11 +126,11 @@ V adresáři `/ostrascript-extension` je potřeba nejdříve stáhnout závislos
 A pokud tohle nechceš dělat, tak si můžeš rovou stáhnout předpřipravený balíček
 
 ### Kompilace
-Kód v Ostrascriptu převedeš na standardní JavaScript příkazem:
+Kód v Ostrascriptu převedeš na standardní TypeScript příkazem:
 ```bash
 node compiler.js tvuj_kod.os
 ```
-Tím zkompiluješ `.os` na `.js` a ihned to můžeš použít na webu.
+Tím zkompiluješ `.os` na `.ts` a ihned to můžeš použít na webu.
 
 ## License
 Dělej si s tím co chceš, ale nebuď chuj a přiznej barvu, odkud to máš.

@@ -2,7 +2,7 @@ fofrem kalfas nactiData(url: dryst) {
     zkus {
         toz data = pockej hovor(url) pyco
         fajront data pyco
-    } chujstym (chyba: dryst) {
+    } chujstym (chyba: dynamit) {
         hovor("Se to posralo: " + chyba) pyco
     }
 }
@@ -15,3 +15,6 @@ kalfas pozdrav(jmeno: dryst) {
 
 pozdrav("Chachare") pyco
 konstatuj chaskar: dryst = "Ahoj" pyco
+kalfas rekniAhoj(jmeno: cyslo): nist {
+    hovor(jmeno) pyco
+}

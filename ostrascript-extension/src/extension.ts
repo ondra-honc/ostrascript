@@ -54,7 +54,7 @@ const ostrascriptDocs: { [key: string]: string } = {
   lacesnebochuj: "Logický typ (true/false).",
   chuj: "Prázdnota (null). Vůbec nic tam není.",
   kokot: "Nedefinováno (undefined). Kdo ví, co to je za nesmysl.",
-  ništ: "Prázdnota (void)",
+  nist: "Prázdnota (void)",
 };
 
 export function activate(context: vscode.ExtensionContext) {
