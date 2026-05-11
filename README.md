@@ -90,6 +90,7 @@ pozdrav("Chachare") pyco
 | `pockej` | `await` 
 | `vythani` | `import`
 | `posly` | `export`
+| `slyb` | `Promise`
 
 ## Typy v Ostrascriptu
 | Ostrascript | TypeScript 

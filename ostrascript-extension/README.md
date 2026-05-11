@@ -10,49 +10,50 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 
 ## 📖 Slovník pojmů
 
-| Ostrascript | JavaScript | Význam |
-| :--- | :--- | :--- |
-| `kalfas` | `function` | Definice funkce |
-| `fajront` | `return` | Konec šichty (návrat z funkce) |
-| `toz` | `let` | Proměnná, co se může změnit |
-| `konstatuj` | `const` | Proměnná, co se nemění |
-| `kaj` | `if` | Podmínka |
-| `inak` | `else` | Jinak |
-| `kajinak` | `else if` | Další možnost |
-| `rubat` | `while` | Dokud se něco děje |
-| `hovor` | `console.log` | Vykecej to do konzole |
-| `laces` | `true` | Jasnačka |
-| `bokdepa` | `false` | Ani omylem |
-| `chuj` | `null` | Nic tam neni |
-| `kokot` | `undefined` | Nikdo neví, co to je |
-| `pyco` | `;` | Tečka na konci řádku |
-| `zkus` | `try` | Zkus to vyrobit |
-| `chujstym` | `catch` | Když se to posere |
-| `fofrem` | `async` | Nečekej na to |
-| `pockej` | `await` | Na tohle si počkej |
-| `novabuchta` | `new` | Nový kus |
-| `tohle` | `this` | Právě tohle |
-| `vythani` | `import` | Dotáhni to sem |
-| `posly` | `export` | Pošli to dál |
+| Ostrascript | TypeScript 
+| :--- | :--- 
+| `kalfas` | `function` 
+| `fajront` | `return` 
+| `toz` | `let` 
+| `konstatuj` | `const`
+| `kaj` | `if`
+| `inak` | `else` 
+| `kajinak` | `else if` 
+| `rubat` | `while` 
+| `hovor` | `console.log` 
+| `laces` | `true` 
+| `bokdepa` | `false` 
+| `chuj` | `null` 
+| `kokot` | `undefined` 
+| `pyco` | `;` 
+| `zkus` | `try` 
+| `chujstym` | `catch` 
+| `fofrem` | `async`
+| `pockej` | `await`
+| `novabuchta` | `new`
+| `tohle` | `this`
+| `vythani` | `import` 
+| `posly` | `export`
 | `dryst` | `string` 
 | `cyslo` | `number` 
 | `lacesnebochuj` | `boolean` 
 | `dynamit` | `any` 
 | `nist` | `void`
 
+
 ## 🛠️ Logické operátory
 
-| Ostrascript | JavaScript |
-| :--- | :--- |
-| `aj` | `&&` (a zároveň) |
-| `ci` | `\|\|` (nebo) |
-| `ajbit` | `&` (bitové A) |
-| `cibit` | `\|` (bitové NEBO) |
+| Ostrascript | TypeScript
+| :--- | :--- 
+| `aj` | `&&` 
+| `ci` | `\|\|` 
+| `ajbit` | `&`  
+| `cibit` | `\|` 
 
 ## 🚀 Jak to rozjet
 1. Nainstaluj tuhle extension.
 2. Vytvoř soubor `moje_robotka.os`.
-3. Píš kód jako chlap.
+3. Piš kód jako chlap.
 4. Použij `compiler.js` k převodu na TypeScript.
 
 ---
