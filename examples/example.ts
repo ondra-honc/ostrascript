@@ -1,4 +1,4 @@
-async function nactiData(url: string) {
+async function nactiData(url: string): any {
     try {
         let data = await console.log(url) ;
         return data ;
@@ -7,7 +7,7 @@ async function nactiData(url: string) {
     }
 }
 
-function pozdrav(jmeno: string) {
+function pozdrav(jmeno: string): boolean {
     let zprava = "Zdar " + jmeno ;
     console.log(zprava) ;
     return true ;

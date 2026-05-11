@@ -102,47 +102,27 @@ export function activate(context: vscode.ExtensionContext) {
       params.forEach((p: any) => {
         if (!p.includes(":") && p.trim().length > 0) {
           const trimmed = p.trim();
-          const startIdx =
-            m.index +
-            openingParenIndex +
-            1 +
-            content.indexOf(trimmed, currentOffset);
-          const startPos = document.positionAt(startIdx);
-          const endPos = document.positionAt(startIdx + trimmed.length);
-
-          errors.push(
-            new vscode.Diagnostic(
-              new vscode.Range(startPos, endPos),
-              "Chachare, u parametru ti chybi typ! Napis tam aspon ': dynamit'.",
-              vscode.DiagnosticSeverity.Error,
-            ),
-          );
+          const startIdx = m.index + openingParenIndex + 1 + content.indexOf(trimmed, currentOffset);
+          errors.push(new vscode.Diagnostic(
+            new vscode.Range(document.positionAt(startIdx), document.positionAt(startIdx + trimmed.length)),
+            "Chachare, u parametru ti chybi typ! Napis tam aspon ': dynamit'.",
+            vscode.DiagnosticSeverity.Error
+          ));
         }
         currentOffset += p.length + 1;
       });
     }
 
-    const constRegex = /\bkonstatuj\s+([a-zA-Z_$][\w$]*)/g;
-    let c: any;
-    while ((c = constRegex.exec(text)) !== null) {
-      const varName = c[1];
-      const matchEnd = c.index + c[0].length;
-
-      const restOfText = text.substring(matchEnd);
-
-      if (!/^\s*:/.test(restOfText)) {
-        const startIdx = c.index + c[0].lastIndexOf(varName);
-        const startPos = document.positionAt(startIdx);
-        const endPos = document.positionAt(startIdx + varName.length);
-
-        errors.push(
-          new vscode.Diagnostic(
-            new vscode.Range(startPos, endPos),
-            `U konstanty '${varName}' musis uvest typ! Napis: konstatuj ${varName}: dryst = ...`,
-            vscode.DiagnosticSeverity.Error,
-          ),
-        );
-      }
+    const funcReturnRegex = /kalfas\s+([a-zA-Z_$][\w$]*)\s*\([^)]*\)(?!\s*:)/g;
+    let f: any;
+    while ((f = funcReturnRegex.exec(text)) !== null) {
+      const funcName = f[1];
+      const startIdx = f.index + f[0].indexOf(funcName);
+      errors.push(new vscode.Diagnostic(
+        new vscode.Range(document.positionAt(startIdx), document.positionAt(startIdx + funcName.length)),
+        `Chachare, u funkce '${funcName}' ti chybi navratovy typ! Co to ma jako vyhodit?`,
+        vscode.DiagnosticSeverity.Warning
+      ));
     }
 
     diagnostics.set(document.uri, errors);
@@ -202,12 +182,13 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
   ): Promise<vscode.SemanticTokens> {
     const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
     const text = document.getText();
+    
+    const allTokens: { range: vscode.Range; type: string }[] = [];
 
     const definedParams = new Set<string>();
-    const paramContainerRegex =
-      /(?:kalfas\s+\w+\s*\(|chujstym\s*\()\s*([^)]+)\)/g;
-    let match: any;
 
+    const paramContainerRegex = /(?:kalfas\s+\w+\s*\(|chujstym\s*\()\s*([^)]+)\)/g;
+    let match: any;
     while ((match = paramContainerRegex.exec(text)) !== null) {
       const containerContent = match[1];
       const params = containerContent.split(",");
@@ -219,31 +200,34 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
 
         if (paramName) {
           definedParams.add(paramName);
-
           const nameIdx = p.indexOf(paramName);
           const absNameIdx = match.index + match[0].indexOf(p) + nameIdx;
-          const startPosName = document.positionAt(absNameIdx);
-          tokensBuilder.push(
-            new vscode.Range(
-              startPosName,
-              startPosName.translate(0, paramName.length),
-            ),
-            "parameter",
-          );
+          allTokens.push({
+            range: new vscode.Range(document.positionAt(absNameIdx), document.positionAt(absNameIdx + paramName.length)),
+            type: "parameter"
+          });
 
           if (typeName) {
             const typeIdx = p.indexOf(typeName);
             const absTypeIdx = match.index + match[0].indexOf(p) + typeIdx;
-            const startPosType = document.positionAt(absTypeIdx);
-            tokensBuilder.push(
-              new vscode.Range(
-                startPosType,
-                startPosType.translate(0, typeName.length),
-              ),
-              "type",
-            );
+            allTokens.push({
+              range: new vscode.Range(document.positionAt(absTypeIdx), document.positionAt(absTypeIdx + typeName.length)),
+              type: "type"
+            });
           }
         }
+      });
+    }
+
+    const returnTypeRegex = /kalfas\s+\w+\s*\([^)]*\)\s*:\s*(\w+)/g;
+    let rtMatch: any;
+    while ((rtMatch = returnTypeRegex.exec(text)) !== null) {
+      const typeName = rtMatch[1];
+      const typeOffset = rtMatch[0].lastIndexOf(typeName);
+      const absTypeIdx = rtMatch.index + typeOffset;
+      allTokens.push({
+        range: new vscode.Range(document.positionAt(absTypeIdx), document.positionAt(absTypeIdx + typeName.length)),
+        type: "type"
       });
     }
 
@@ -253,10 +237,22 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
         const regex = new RegExp(`\\b${paramName}\\b`, "g");
         let m;
         while ((m = regex.exec(lineText)) !== null) {
-          tokensBuilder.push(lineNum, m.index, paramName.length, 0, 0);
+          allTokens.push({
+            range: new vscode.Range(lineNum, m.index, lineNum, m.index + paramName.length),
+            type: "parameter"
+          });
         }
       });
     });
+
+    allTokens.sort((a, b) => {
+      if (a.range.start.line !== b.range.start.line) {
+        return a.range.start.line - b.range.start.line;
+      }
+      return a.range.start.character - b.range.start.character;
+    });
+
+    allTokens.forEach(t => tokensBuilder.push(t.range, t.type));
 
     return tokensBuilder.build();
   }

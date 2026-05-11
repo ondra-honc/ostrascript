@@ -1,4 +1,4 @@
-fofrem kalfas nactiData(url: dryst) {
+fofrem kalfas nactiData(url: dryst): dynamit {
     zkus {
         toz data = pockej hovor(url) pyco
         fajront data pyco
@@ -7,7 +7,7 @@ fofrem kalfas nactiData(url: dryst) {
     }
 }
 
-kalfas pozdrav(jmeno: dryst) {
+kalfas pozdrav(jmeno: dryst): lacesnebochuj {
     toz zprava = "Zdar " + jmeno pyco
     hovor(zprava) pyco
     fajront laces pyco

@@ -1,7 +1,7 @@
 {
   "name": "ostrascript",
   "displayName": "Ostrascript",
-  "publisher": "Ondřej Honc",
+  "publisher": "ondrej-honc",
   "version": "0.1.2",
   "icon": "icon.png",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "theme": "dark"
   },
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.118.0"
   },
   "activationEvents": [
     "onLanguage:ostrascript"

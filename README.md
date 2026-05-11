@@ -1,6 +1,6 @@
 # Ostrascript
 
-**Ostrascript** je nejostřejší nadstavba nad JavaScriptem, určená pro ty, co nemají čas na zbytečné kecy kolem webového programování. Zatímco se ostatní patlají s TypeScriptem, ty už máš hotovo, bo píšeš v jazyce, který má řád.
+**Ostrascript** je nejostřejší nadstavba nad TypeScriptem, určená pro ty, co nemají čas na zbytečné kecy kolem webového programování. Zatímco se ostatní patlají s TypeScriptem, ty už máš hotovo, bo píšeš v jazyce, který má řád.
 
 > "Bo na webu neni čas na pičoviny!"
 
@@ -12,7 +12,7 @@ TypeScript je dneska všude, ale chybí mu ta správná ocelová nátura. Ostras
 - Žádný `console.log`, prostě **hovor**.
 
 ## Příklad ##
-Zde je takový průměrný JavaScriptový program:
+Zde je takový průměrný TypeScriptový program:
 ```typescript
 async function nactiData(url) {
     try {
@@ -54,7 +54,7 @@ pozdrav("Chachare") pyco
 
 ## Klíčový slova ##
 
-| Ostrascript | JavaScript 
+| Ostrascript | TypeScript 
 | :--- | :--- 
 | `kalfas` | `function`
 | `fajront` | `return`
@@ -71,7 +71,7 @@ pozdrav("Chachare") pyco
 
 ## Logické operátory a hodnoty
 
-| Ostrascript | JavaScript 
+| Ostrascript | TypeScript 
 | :--- | :--- 
 | `aj` | `&&` 
 | `ci` | `\|\|` 
@@ -82,7 +82,7 @@ pozdrav("Chachare") pyco
 
 ## Asynchronní robota a chyby
 
-| Ostrascript | JavaScript 
+| Ostrascript | TypeScript 
 | :--- | :--- 
 | `zkus` | `try` 
 | `chujstym` | `catch` 
@@ -92,7 +92,7 @@ pozdrav("Chachare") pyco
 | `posly` | `export`
 
 ## Typy v Ostrascriptu
-| Ostrascript | JavaScript 
+| Ostrascript | TypeScript 
 | :--- | :--- 
 | `dryst` | `string` 
 | `cyslo` | `number` 
@@ -116,7 +116,7 @@ V adresáři `/ostrascript-extension` je potřeba nejdříve stáhnout závislos
    npm init -y
    npm install --save-dev typescript vscode-test @types/vscode @types/node
    ```
-3. Zkompiluj Typescript do Javascriptu:
+3. Zkompiluj do Typescriptu:
    ```bash
    npm run compile
    ```
