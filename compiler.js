@@ -34,6 +34,7 @@ const mapping = {
     'kokot': 'undefined',
     'nist': 'void',
     'dynamit': 'any',
+    'slyb': 'Promise',
 
     'rubat': 'while',
 

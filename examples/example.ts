@@ -1,4 +1,4 @@
-async function nactiData(url: string): any {
+async function nactiData(url: string): Promise<any> {
     try {
         let data = await console.log(url) ;
         return data ;

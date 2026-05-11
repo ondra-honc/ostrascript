@@ -55,6 +55,7 @@ const ostrascriptDocs: { [key: string]: string } = {
   chuj: "Prázdnota (null). Vůbec nic tam není.",
   kokot: "Nedefinováno (undefined). Kdo ví, co to je za nesmysl.",
   nist: "Prázdnota (void)",
+  slyb: "Použito u fofr funkcí, aby bylo jedno jestli se to posere"
 };
 
 export function activate(context: vscode.ExtensionContext) {
@@ -147,7 +148,7 @@ export function activate(context: vscode.ExtensionContext) {
           }
 
           if (
-            ["dryst", "cyslo", "lacesnebochuj", "dynamit", "ništ"].includes(key)
+            ["dryst", "cyslo", "lacesnebochuj", "dynamit", "ništ", "slyb"].includes(key)
           ) {
             item.kind = vscode.CompletionItemKind.TypeParameter;
           } else {

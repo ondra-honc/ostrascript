@@ -1,4 +1,4 @@
-fofrem kalfas nactiData(url: dryst): dynamit {
+fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
     zkus {
         toz data = pockej hovor(url) pyco
         fajront data pyco
