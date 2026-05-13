@@ -84,12 +84,10 @@ export function activate(context: vscode.ExtensionContext) {
   });
   context.subscriptions.push(hoverProvider);
 
-  // --- ZDE ZAČÍNÁ NOVÝ A KOMPLETNÍ COMPLETION PROVIDER ---
   const completionProvider = vscode.languages.registerCompletionItemProvider(
     "ostrascript",
     {
       provideCompletionItems(document, position, token, context) {
-        // Logika se spouští, jen když uživatel napíše tečku
         if (context.triggerCharacter === ".") {
           const linePrefix = document.lineAt(position).text.substring(0, position.character);
           const variableMatch = linePrefix.match(/(\b[a-zA-Z_$][\w$]*)\s*\.$/);
@@ -98,18 +96,16 @@ export function activate(context: vscode.ExtensionContext) {
             const variableName = variableMatch[1];
             const documentText = document.getText();
             
-            // Jeden regex, který najde typ proměnné NEBO parametru funkce
             const typeRegex = new RegExp(
-                `(?:konstatuj|toz|let)\\s+${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)` + // Pro proměnné: konstatuj nazev: typ
-                `|` + // NEBO
-                `\\b${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)`, // Pro parametry: (nazev: typ)
+                `(?:konstatuj|toz|let)\\s+${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)` + 
+                `|` +
+                `\\b${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)`, 
                 "g"
             );
             
             let match;
             let varType: string | null = null;
             while ((match = typeRegex.exec(documentText)) !== null) {
-              // Výsledek bude buď v první, nebo druhé zachytávací skupině
               varType = match[1] || match[2] || null;
             }
 
@@ -117,15 +113,12 @@ export function activate(context: vscode.ExtensionContext) {
               if (varType.includes("[]") || varType === "seznam") {
                 return getArrayMethods();
               }
-              // Zde můžeš přidat doplňování pro další typy
               // if (varType === 'dryst') { return getStringMethods(); }
             }
           }
-          // Pokud nic nenajdeme, nevrátíme žádné doplňky po tečce
           return [];
         }
 
-        // Výchozí chování (pokud se nepíše tečka): doplň klíčová slova a všechny proměnné
         const completions: vscode.CompletionItem[] = [];
         const text = document.getText();
         const varRegex = /\b(?:toz|konstatuj|typ|let)\s+([a-zA-Z_$][\w$]*)/g;
@@ -166,7 +159,6 @@ export function activate(context: vscode.ExtensionContext) {
     return completions;
   }
 
-  // --- ZDE ZAČÍNÁ NOVÁ DIAGNOSTIKA ---
   const validateTypes = (document: vscode.TextDocument) => {
     if (document.languageId !== "ostrascript") return;
     const text = document.getText();
@@ -174,7 +166,6 @@ export function activate(context: vscode.ExtensionContext) {
     const activeEditor = vscode.window.activeTextEditor;
     const currentLine = activeEditor?.selection.active.line;
 
-    // Najde všechny deklarace 'konstatuj' a 'toz', za kterými NENÍ dvojtečka
     const missingTypeRegex = /\b(konstatuj|toz)\s+([a-zA-Z_$][\w$]*)\s*=(?![^=]*:)/g;
     let missingTypeMatch;
     while ((missingTypeMatch = missingTypeRegex.exec(text))) {
@@ -197,7 +188,6 @@ export function activate(context: vscode.ExtensionContext) {
         );
     }
     
-    // Zbytek tvých diagnostik (pyco, parametry...) může zůstat
     for (let i = 0; i < document.lineCount; i++) {
         if (i === currentLine) continue;
         const line = document.lineAt(i);
