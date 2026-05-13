@@ -33,6 +33,13 @@
             ]
         },
         {
+            "name": "meta.method-call.ostrascript",
+            "match": "\\.([a-zA-Z_$][\\w$]*)",
+            "captures": {
+                "1": { "name": "entity.name.function.ostrascript" }
+            }
+        },
+        {
             "name": "meta.type.definition.ostrascript",
             "match": "\\b(typ)\\s+([a-zA-Z_$][\\w$]*)\\b",
             "captures": {
@@ -49,16 +56,28 @@
             }
         },
         {
+            "name": "keyword.operator.assignment.ostrascript",
+            "match": "="
+        },
+        {
+            "name": "constant.numeric.ostrascript",
+            "match": "\\b[0-9]+(?:\\.[0-9]+)?\\b"
+        },
+        {
             "name": "keyword.control.ostrascript",
             "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta)\\b"
         },
         {
             "name": "storage.type.ostrascript",
-            "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser)\\b"
+            "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser|slyb)\\b"
         },
         {
             "name": "keyword.operator.logical.ostrascript",
             "match": "\\b(aj|ci|ajbit|cibit)\\b"
+        },
+        {
+            "name": "keyword.operator.arrow.ostrascript",
+            "match": "=>"
         },
         {
             "name": "constant.language.ostrascript",
