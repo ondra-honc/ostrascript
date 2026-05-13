@@ -144,8 +144,9 @@ V adresáři `/ostrascript-extension` je potřeba nejdříve stáhnout závislos
    ```
 4. Udělej `.vsix` balíček:
     ```bash
-    npx vsce package na úrovni package.json (`/ostrascript-extension`)
+    npx vsce package 
     ```
+    - na úrovni package.json (`/ostrascript-extension`)
 
 5. Instalace:
     - Po té můžeš v adresáři najít hotový  `.vsix` balíček, který potom přes `Install from VSIX` v extension menu stáhneš. Po instalaci se doporučuje restartvoat VS Code.
