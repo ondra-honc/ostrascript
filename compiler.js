@@ -4,7 +4,7 @@ const path = require('path');
 const inputFile = process.argv[2];
 
 if (!inputFile) {
-    console.error("Chybi ti soubor, pyco! Napis: node ostra.js jmeno_souboru.os");
+    console.error("Chybi ti soubor, pyco! Napis: node compiler.js jmeno_souboru.os");
     process.exit(1);
 }
 
@@ -37,6 +37,7 @@ const mapping = {
     'slyb': 'Promise',
 
     'rubat': 'while',
+    'typ': 'type',
 
     'pyco': ';',
 
@@ -54,6 +55,33 @@ const mapping = {
     'zrus': 'delete',
     'vythani': 'import',
     'posly': 'export',
+
+    // Pole 
+    'preber': 'filter',
+    'premapuj': 'map',
+    'vsecky': 'forEach',
+    'prypychni': 'push',
+    
+    // Cykly
+    'pro': 'for',
+    'jebnato': 'break',
+    'dalsy': 'continue',
+
+    // Logika / Error
+    'mrdni': 'throw',
+    'naposled': 'finally',
+    'pruser': 'Error',
+    'typni': 'typeof',
+    
+    'vrat': 'yield',
+
+    'buchta': 'Record', 
+    'seznam': 'Array', 
+    'vlastnost': 'keyof', 
+    
+    'buchtoklyce': 'Object.keys',
+    'buchtohody': 'Object.values',
+    'rozemel': '...'
 };
 
 function transpile(code) {
@@ -69,9 +97,16 @@ function transpile(code) {
 try {
     console.log(`[OstraScript] 🛠️  Root soubor: ${inputFile}`);
     const inputCode = fs.readFileSync(inputFile, 'utf8');
-    const outputJS = transpile(inputCode);
+    const outputTS = transpile(inputCode);
     
-    fs.writeFileSync(outputFile, outputJS);
+    const head = `// --- KOMPILOVANO Z OSTRASCRIPTU ---
+// --- NEEDITOVAT ---  
+
+`;
+
+    const finalCode = head + outputTS;
+
+    fs.writeFileSync(outputFile, finalCode);
     console.log(`[OstraScript] ✅ Hotovo, pyco! Najdes to v: ${outputFile}`);
 } catch (err) {
     console.error("Doslo k chybe:", err.message);

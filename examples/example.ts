@@ -1,3 +1,6 @@
+// --- KOMPILOVANO Z OSTRASCRIPTU ---
+// --- NEEDITOVAT ---  
+
 async function nactiData(url: string): Promise<any> {
     try {
         let data = await console.log(url) ;
@@ -14,7 +17,3 @@ function pozdrav(jmeno: string): boolean {
 }
 
 pozdrav("Chachare") ;
-const chaskar: string = "Ahoj" ;
-function rekniAhoj(jmeno: number): void {
-    console.log(jmeno) ;
-}

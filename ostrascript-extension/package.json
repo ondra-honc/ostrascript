@@ -2,7 +2,7 @@
   "name": "ostrascript",
   "displayName": "Ostrascript",
   "publisher": "ondrej-honc",
-  "version": "0.1.7",
+  "version": "0.2.4",
   "icon": "icon.png",
   "license": "MIT",
   "keywords": [
@@ -51,6 +51,14 @@
       {
         "id": "parameter",
         "description": "Parametry funkci a chujstym"
+      },
+      {
+        "id": "type",
+        "description": "Datove typy"
+      },
+      {
+        "id": "function",
+        "description": "Nazvy funkci"
       }
     ],
     "semanticTokenModifiers": [],
@@ -60,6 +68,12 @@
         "scopes": {
           "parameter": [
             "variable.parameter"
+          ],
+          "type": [
+            "entity.name.type"
+          ],
+          "function": [
+            "entity.name.function"
           ]
         }
       }

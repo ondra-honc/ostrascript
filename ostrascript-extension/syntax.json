@@ -33,6 +33,14 @@
             ]
         },
         {
+            "name": "meta.type.definition.ostrascript",
+            "match": "\\b(typ)\\s+([a-zA-Z_$][\\w$]*)\\b",
+            "captures": {
+                "1": { "name": "storage.type.ostrascript" },
+                "2": { "name": "entity.name.type.ostrascript" }
+            }
+        },
+        {
             "name": "meta.catch.ostrascript",
             "match": "\\b(chujstym)\\s*\\(\\s*([a-zA-Z_$][\\w$]*)\\s*\\)",
             "captures": {
@@ -42,11 +50,11 @@
         },
         {
             "name": "keyword.control.ostrascript",
-            "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt)\\b"
+            "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta)\\b"
         },
         {
             "name": "storage.type.ostrascript",
-            "match": "\\b(kalfas|toz|konstatuj|tryda)\\b"
+            "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser)\\b"
         },
         {
             "name": "keyword.operator.logical.ostrascript",

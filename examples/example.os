@@ -14,7 +14,3 @@ kalfas pozdrav(jmeno: dryst): lacesnebochuj {
 }
 
 pozdrav("Chachare") pyco
-konstatuj chaskar: dryst = "Ahoj" pyco
-kalfas rekniAhoj(jmeno: cyslo): nist {
-    hovor(jmeno) pyco
-}

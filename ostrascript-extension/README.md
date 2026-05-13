@@ -20,7 +20,8 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `inak` | `else` 
 | `kajinak` | `else if` 
 | `rubat` | `while` 
-| `hovor` | `console.log` 
+| `hovor` | `console.log`
+| `typ` | `type` 
 | `laces` | `true` 
 | `bokdepa` | `false` 
 | `chuj` | `null` 
@@ -39,6 +40,24 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `lacesnebochuj` | `boolean` 
 | `dynamit` | `any` 
 | `nist` | `void`
+| `preber` | `filter`
+| `premapuj` | `map`
+| `vsecky` | `forEach`
+| `prypychni` | `push`
+| `pro` | `for`
+| `jebnato` | `break`
+| `dalsy` | `continue`
+| `mrdni` | `throw`
+| `naposled` | `finally`
+| `pruser` | `Error`
+| `typni` | `typeof`
+| `vrat` | `yield`
+| `buchta` | `Record`
+| `seznam` | `Array`
+| `vlastnost` | `keyof`
+| `buchtoklyce` | `Object.keys`
+| `buchtohody` | `Object.values`
+| `rozemel` | `...`
 
 
 ## 🛠️ Logické operátory

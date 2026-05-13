@@ -14,16 +14,16 @@ TypeScript je dneska všude, ale chybí mu ta správná ocelová nátura. Ostras
 ## Příklad ##
 Zde je takový průměrný TypeScriptový program:
 ```typescript
-async function nactiData(url) {
+async function nactiData(url: string): Promise<any> {
     try {
         let data = await console.log(url) ;
         return data ;
-    } catch (chyba) {
+    } catch (chyba: any) {
         console.log("Se to posralo: " + chyba) ;
     }
 }
 
-function pozdrav(jmeno) {
+function pozdrav(jmeno: string): boolean {
     let zprava = "Zdar " + jmeno ;
     console.log(zprava) ;
     return true ;
@@ -34,16 +34,16 @@ pozdrav("Chachare") ;
 
 Ale takhle by vypadal v inovativním jazyku pro ostraváky:
 ```typescript
-fofrem kalfas nactiData(url) {
+fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
     zkus {
         toz data = pockej hovor(url) pyco
         fajront data pyco
-    } chujstym (chyba) {
+    } chujstym (chyba: dynamit) {
         hovor("Se to posralo: " + chyba) pyco
     }
 }
 
-kalfas pozdrav(jmeno) {
+kalfas pozdrav(jmeno: dryst): lacesnebochuj {
     toz zprava = "Zdar " + jmeno pyco
     hovor(zprava) pyco
     fajront laces pyco
@@ -51,6 +51,8 @@ kalfas pozdrav(jmeno) {
 
 pozdrav("Chachare") pyco
 ```
+
+- Jazyk ostrascript obsahuje striktní typování a středník na konci řádku
 
 ## Klíčový slova ##
 
@@ -68,6 +70,25 @@ pozdrav("Chachare") pyco
 | `pyco` | `;` 
 | `novabuchta` | `new` 
 | `tohle` | `this` 
+| `typ` | `type`
+| `preber` | `filter`
+| `premapuj` | `map`
+| `vsecky` | `forEach`
+| `prypychni` | `push`
+| `pro` | `for`
+| `jebnato` | `break`
+| `dalsy` | `continue`
+| `mrdni` | `throw`
+| `naposled` | `finally`
+| `pruser` | `Error`
+| `typni` | `typeof`
+| `vrat` | `yield`
+| `buchta` | `Record`
+| `seznam` | `Array`
+| `vlastnost` | `keyof`
+| `buchtoklyce` | `Object.keys`
+| `buchtohody` | `Object.values`
+| `rozemel` | `...`
 
 ## Logické operátory a hodnoty
 
@@ -134,4 +155,5 @@ node compiler.js tvuj_kod.os
 Tím zkompiluješ `.os` na `.ts` a ihned to můžeš použít na webu.
 
 ## License
-Dělej si s tím co chceš, ale nebuď chuj a přiznej barvu, odkud to máš.
+- Dělej si s tím co chceš, ale nebuď chuj a přiznej barvu, odkud to máš.
+- Velmi inspirováno projektem OSTRAJava od Tomáše Kohouta (https://github.com/tkohout/ostrajava)
