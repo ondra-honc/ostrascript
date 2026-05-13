@@ -25,17 +25,17 @@ konstatuj ziskejDataServeru = fofrem (id: cyslo): slyb<dryst> => {
     fajront `Data pro ID: ${id}` pyco
 }
 
-konstatuj spustTesty = fofrem () => {
+konstatuj spustTesty = fofrem (): nist => {
     hovor("Startuju testy...") pyco
 
-    konstatuj vysledekFaktorialu = faktorial(5) pyco
+    konstatuj vysledekFaktorialu: cyslo = faktorial(5) pyco
     hovor(vysledekFaktorialu) pyco
 
     konstatuj pridejDeset = vytvorScitac(10) pyco
     hovor(pridejDeset(5)) pyco
 
     konstatuj mojeCisla: cyslo[] = [1,2,3,4,5] pyco
-    konstatuj vysledekPole = zpracujData(mojeCisla) pyco
+    konstatuj vysledekPole: dryst[] = zpracujData(mojeCisla) pyco
     hovor(vysledekPole) pyco
 
     zkus {

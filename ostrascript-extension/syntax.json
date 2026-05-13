@@ -89,7 +89,7 @@
         },
         {
             "name": "support.type.ostrascript",
-            "match": "\\b(cyslo|dryst|lacesnebochuj|tryda|dynamit|buchta|ništ)\\b"
+            "match": "\\b(cyslo|dryst|lacesnebochuj|tryda|dynamit|buchta|nist)\\b"
         }
     ]
 }

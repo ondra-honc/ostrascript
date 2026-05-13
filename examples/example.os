@@ -8,7 +8,7 @@ fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
 }
 
 kalfas pozdrav(jmeno: dryst): lacesnebochuj {
-    toz zprava = "Zdar " + jmeno pyco
+    toz zprava: dryst = "Zdar " + jmeno pyco
     hovor(zprava) pyco
     fajront laces pyco
 }
