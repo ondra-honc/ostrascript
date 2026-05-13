@@ -36,7 +36,7 @@ Ale takhle by vypadal v inovativním jazyku pro ostraváky:
 ```typescript
 fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
     zkus {
-        toz data = pockej hovor(url) pyco
+        toz data: dryst = pockej hovor(url) pyco
         fajront data pyco
     } chujstym (chyba: dynamit) {
         hovor("Se to posralo: " + chyba) pyco
