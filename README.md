@@ -36,7 +36,7 @@ Ale takhle by vypadal v inovativním jazyku pro ostraváky:
 ```typescript
 fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
     zkus {
-        toz data: dryst = pockej hovor(url) pyco
+        toz data = pockej hovor(url) pyco
         fajront data pyco
     } chujstym (chyba: dynamit) {
         hovor("Se to posralo: " + chyba) pyco
@@ -44,7 +44,7 @@ fofrem kalfas nactiData(url: dryst): slyb<dynamit> {
 }
 
 kalfas pozdrav(jmeno: dryst): lacesnebochuj {
-    toz zprava = "Zdar " + jmeno pyco
+    toz zprava: dryst = "Zdar " + jmeno pyco
     hovor(zprava) pyco
     fajront laces pyco
 }
@@ -142,7 +142,12 @@ V adresáři `/ostrascript-extension` je potřeba nejdříve stáhnout závislos
    ```bash
    npm run compile
    ```
-4. Instalace:
+4. Udělej `.vsix` balíček:
+    ```bash
+    npx vsce package na úrovni package.json (`/ostrascript-extension`)
+    ```
+
+5. Instalace:
     - Po té můžeš v adresáři najít hotový  `.vsix` balíček, který potom přes `Install from VSIX` v extension menu stáhneš. Po instalaci se doporučuje restartvoat VS Code.
 
 A pokud tohle nechceš dělat, tak si můžeš rovou stáhnout předpřipravený balíček
