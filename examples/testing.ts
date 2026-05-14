@@ -28,17 +28,17 @@ const ziskejDataServeru = async (id: number): Promise<string> => {
     return `Data pro ID: ${id}` ;
 }
 
-const spustTesty = async () => {
+const spustTesty = async (): Promise<void> => {
     console.log("Startuju testy...") ;
 
-    const vysledekFaktorialu = faktorial(5) ;
+    const vysledekFaktorialu: number = faktorial(5) ;
     console.log(vysledekFaktorialu) ;
 
     const pridejDeset = vytvorScitac(10) ;
     console.log(pridejDeset(5)) ;
 
     const mojeCisla: number[] = [1,2,3,4,5] ;
-    const vysledekPole = zpracujData(mojeCisla) ;
+    const vysledekPole: string[] = zpracujData(mojeCisla) ;
     console.log(vysledekPole) ;
 
     try {

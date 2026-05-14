@@ -115,28 +115,21 @@
         "operators": {
             "patterns": [
                 {
-                    "name": "keyword.operator.arrow.ostrascript",
+                    "name": "storage.type.function.arrow.ostrascript", 
                     "match": "=>"
                 },
                 {
-                    "name": "keyword.operator.comparison.ostrascript",
-                    "match": "(<=|>=|===|==|!=|<|>)"
-                },
-                {
-                    "name": "keyword.operator.arithmetic.ostrascript",
-                    "match": "[*+\\-%/]"
-                },
-                {
-                    "name": "keyword.operator.assignment.ostrascript",
-                    "match": "="
+                    "name": "keyword.operator.ostrascript",
+                    "match": "(<|>|===|==|!=|=|[*+\\-%/])"
                 }
             ]
         },
+
         "keywords": {
             "patterns": [
                 {
                     "name": "keyword.control.ostrascript",
-                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta|jebnato|dalsy|pro|vrat)\\b"
+                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta|jebnato|dalsy|pro|vrat|mensy|mensyrovno|vetsy|vetsyrovno)\\b"
                 },
                 {
                     "name": "storage.type.ostrascript",
@@ -160,7 +153,7 @@
                 },
                 {
                     "name": "constant.language.ostrascript",
-                    "match": "\\b(laces|bokdepa|chuj|kokot|nist|dynamit|cyslo|dryst|lacesnebochuj|buchta|seznam)\\b"
+                    "match": "\\b(laces|bokdepa|chuj|kokot|nist|dynamit)\\b"
                 }
             ]
         },
@@ -204,28 +197,9 @@
                     "name": "meta.type.definition.ostrascript",
                     "match": "\\b(typ)\\s+([a-zA-Z_$][\\w$]*)",
                     "captures": {
-                        "1": {
-                            "name": "storage.type.ostrascript"
-                        },
-                        "2": {
-                            "name": "entity.name.type.ostrascript"
-                        }
+                        "1": { "name": "storage.type.ostrascript" },
+                        "2": { "name": "entity.name.type.ostrascript" }
                     }
-                },
-                {
-                    "match": "(\\b[a-zA-Z_$][\\w$]*)(\\s*)(<)",
-                    "captures": {
-                        "1": {
-                            "name": "entity.name.type.ostrascript"
-                        },
-                        "3": {
-                            "name": "entity.name.function.ostrascript"
-                        }
-                    }
-                },
-                {
-                    "match": ">",
-                    "name": "entity.name.function.ostrascript"
                 }
             ]
         }

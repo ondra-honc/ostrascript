@@ -98,6 +98,10 @@ pozdrav("Chachare") pyco
 | `ci` | `\|\|` 
 | `ajbit` | `&` 
 | `cibit` | `\|` 
+| `mensy` | `<`
+| `mensyrovno` | `<=`
+| `vetsy` | `>`
+| `vetsyrovno` | `>=`
 | `laces` | `true` 
 | `bokdepa` | `false` 
 

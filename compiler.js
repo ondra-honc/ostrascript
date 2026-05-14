@@ -21,6 +21,10 @@ const mapping = {
     'aj': '&&',
     'cibit': '|',
     'ajbit': '&',
+    'mensy': '<',
+    'mensyrovno': '<=',
+    'vetsy': '>',
+    'vetsyrovno': '>=',
   
     'toz': 'let',
     'konstatuj': 'const',

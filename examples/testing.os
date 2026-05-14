@@ -1,7 +1,7 @@
 // --- TESTOVACÍ SADA PRO KOMPILÁTOR ---
 
 konstatuj faktorial = (n: cyslo): cyslo => {
-    kaj (n <= 1) fajront 1 pyco
+    kaj (n mensyrovno 1) fajront 1 pyco
     fajront n * faktorial(n - 1) pyco
 }
 
@@ -14,18 +14,18 @@ konstatuj vytvorScitac = (zaklad: cyslo) => {
 konstatuj zpracujData = (cisla: cyslo[]): dryst[] => {
     fajront cisla.preber(n => n % 2 === 0).premapuj(n => `Cislo ${n}`) pyco
 }
-
+  
 konstatuj ziskejDataServeru = fofrem (id: cyslo): slyb<dryst> => {
     pockej novabuchta slyb(resolve => setTimeout(resolve, 100)) pyco
 
-    kaj (id < 0) {
+    kaj (id mensy 0) {
         mrdni novabuchta pruser("ID nesmi byt zaporne!") pyco
     }
 
     fajront `Data pro ID: ${id}` pyco
 }
 
-konstatuj spustTesty = fofrem (): nist => {
+konstatuj spustTesty = fofrem (): slyb<nist> => {
     hovor("Startuju testy...") pyco
 
     konstatuj vysledekFaktorialu: cyslo = faktorial(5) pyco

@@ -68,6 +68,10 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `ci` | `\|\|` 
 | `ajbit` | `&`  
 | `cibit` | `\|` 
+| `mensy` | `<`
+| `mensyrovno` | `<=`
+| `vetsy` | `>`
+| `vetsyrovno` | `>=`
 
 ## 🚀 Jak to rozjet
 1. Nainstaluj tuhle extension.

@@ -8,3 +8,11 @@
 - Context-aware completion for array methods.
 - Error diagnostics for missing semicolons (`pyco`) and type annotations.
 - Hover documentation for all keywords.
+
+## [1.1.0] - 14-05-2026
+### Bugfix
+
+## [1.2.1] - 14-05-2026
+### Added
+- New words
+- Arrow operator color

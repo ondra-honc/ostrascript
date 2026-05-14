@@ -61,6 +61,10 @@ const ostrascriptDocs: { [key: string]: string } = {
   buchtoklyce: "Vytahne vsecky nazvy (klice) z tvoji buchty.",
   buchtohody: "Vytahne vsecky hodnoty, co jsou v buchte schovane.",
   rozemel: "Rozsype pole nebo buchtu na kousky.",
+  mensy: "<",
+  mensyrovno: "<=",
+  vetsy: ">",
+  vetsyrovno: "=<",
 };
 
 export function activate(context: vscode.ExtensionContext) {
