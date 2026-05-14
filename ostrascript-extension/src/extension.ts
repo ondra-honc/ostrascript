@@ -214,7 +214,6 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.workspace.textDocuments.forEach(validateTypes);
 }
 
-
 class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
   async provideDocumentSemanticTokens(
     document: vscode.TextDocument,
@@ -321,6 +320,27 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
       });
     }
 
+    const otherTypeRegex = /:\s*([\w\d\[\]<>]+)/g;
+    let otherTypeMatch: RegExpExecArray | null;
+    while ((otherTypeMatch = otherTypeRegex.exec(text))) {
+        const typeName = otherTypeMatch[1];
+        const typeIndex = otherTypeMatch.index + otherTypeMatch[0].indexOf(typeName);
+        const typeRange = new vscode.Range(
+            document.positionAt(typeIndex),
+            document.positionAt(typeIndex + typeName.length)
+        );
+
+        const isDuplicate = allTokens.some(t => t.range.isEqual(typeRange));
+
+        if (!isDuplicate) {
+            allTokens.push({
+                range: typeRange,
+                type: "type",
+            });
+        }
+    }
+
+
     lines.forEach((lineText, lineNum) => {
       definedParams.forEach((paramName) => {
         const regex = new RegExp(`\\b${paramName}\\b`, "g");
@@ -346,7 +366,7 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
         }
       });
     });
-
+    
     allTokens.sort((a, b) => {
       if (a.range.start.line !== b.range.start.line)
         return a.range.start.line - b.range.start.line;

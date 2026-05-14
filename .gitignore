@@ -1,4 +1,4 @@
-# Závislosti (tohle je největší balík, co nechceš na GitHubu)
+# Závislosti
 node_modules/
 
 # Zkompilovaný kód
