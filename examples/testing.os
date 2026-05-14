@@ -28,7 +28,7 @@ konstatuj ziskejDataServeru = fofrem (id: cyslo): slyb<dryst> => {
 konstatuj spustTesty = fofrem (): nist => {
     hovor("Startuju testy...") pyco
 
-    konstatuj vysledekFaktorialu: cyslo = faktorial(5) pyco
+    konstatuj vysledekFaktorialu: cyslo= faktorial(5) pyco
     hovor(vysledekFaktorialu) pyco
 
     konstatuj pridejDeset = vytvorScitac(10) pyco

@@ -6,7 +6,7 @@
             "name": "comment.line.double-slash.ostrascript",
             "match": "//.*$"
         },
-        {
+       {
             "name": "string.quoted.double.ostrascript",
             "begin": "\"",
             "end": "\"",
@@ -14,6 +14,36 @@
                 {
                     "name": "constant.character.escape.ostrascript",
                     "match": "\\\\."
+                },
+                {
+                    "name": "variable.interpolation.ostrascript",
+                    "match": "\\$\\{[^\\}]*\\}"
+                }
+            ]
+        },
+        {
+            "name": "string.quoted.single.ostrascript",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ostrascript",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        {
+            "name": "string.quoted.template.ostrascript",
+            "begin": "`",
+            "end": "`",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ostrascript",
+                    "match": "\\\\."
+                },
+                {
+                    "name": "variable.interpolation.ostrascript",
+                    "match": "\\$\\{[^\\}]*\\}"
                 }
             ]
         },
