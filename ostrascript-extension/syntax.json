@@ -3,25 +3,35 @@
     "scopeName": "source.os",
     "patterns": [
         {
-            "include": "#comments"
-        },
-        {
-            "include": "#strings"
-        },
-        {
-            "include": "#generics"
-        },
-        {
-            "include": "#operators"
-        },
-        {
-            "include": "#keywords"
-        },
-        {
-            "include": "#constants"
+            "include": "#main"
         }
     ],
     "repository": {
+        "main": {
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#operators"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#constants"
+                },
+                {
+                    "include": "#functions"
+                },
+                {
+                    "include": "#types"
+                }
+            ]
+        },
         "comments": {
             "patterns": [
                 {
@@ -96,30 +106,9 @@
                     },
                     "patterns": [
                         {
-                            "include": "#main",
-                            "name": "source.os"
+                            "include": "#main"
                         }
                     ]
-                }
-            ]
-        },
-        "generics": {
-            "patterns": [
-                {
-                    "name": "meta.type.generic.ostrascript",
-                    "match": "(\\b[a-zA-Z_$][\\w$]*)(\\s*)(<)",
-                    "captures": {
-                        "1": {
-                            "name": "entity.name.type.ostrascript"
-                        },
-                        "3": {
-                            "name": "entity.name.function.ostrascript"
-                        }
-                    }
-                },
-                {
-                    "name": "entity.name.function.ostrascript",
-                    "match": ">"
                 }
             ]
         },
@@ -147,11 +136,11 @@
             "patterns": [
                 {
                     "name": "keyword.control.ostrascript",
-                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta)\\b"
+                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta|jebnato|dalsy|pro|vrat)\\b"
                 },
                 {
                     "name": "storage.type.ostrascript",
-                    "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser|slyb)\\b"
+                    "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser|slyb|vythani|posly|tohle|zrus|typni|vlastnost)\\b"
                 },
                 {
                     "name": "keyword.operator.logical.ostrascript",
@@ -159,7 +148,7 @@
                 },
                 {
                     "name": "support.function.ostrascript",
-                    "match": "\\b(hovor|rubej)\\b"
+                    "match": "\\b(hovor|rubej|buchtoklyce|buchtohody|rozemel)\\b"
                 }
             ]
         },
@@ -171,29 +160,72 @@
                 },
                 {
                     "name": "constant.language.ostrascript",
-                    "match": "\\b(laces|bokdepa|chuj|kokot|nist|dynamit)\\b"
+                    "match": "\\b(laces|bokdepa|chuj|kokot|nist|dynamit|cyslo|dryst|lacesnebochuj|buchta|seznam)\\b"
                 }
             ]
         },
-        "main": {
+        "functions": {
             "patterns": [
                 {
-                    "include": "#comments"
+                    "name": "meta.function-call.ostrascript",
+                    "match": "(\\b[a-zA-Z_$][\\w$]*)(\\()",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.ostrascript"
+                        }
+                    }
                 },
                 {
-                    "include": "#strings"
+                    "name": "meta.method-call.ostrascript",
+                    "match": "(\\.([a-zA-Z_$][\\w$]*))",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.function.ostrascript"
+                        }
+                    }
                 },
                 {
-                    "include": "#generics"
+                    "name": "meta.function.definition.ostrascript",
+                    "match": "\\b(kalfas)\\s+([a-zA-Z_$][\\w$]*)",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.ostrascript"
+                        },
+                        "2": {
+                            "name": "entity.name.function.ostrascript"
+                        }
+                    }
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "name": "meta.type.definition.ostrascript",
+                    "match": "\\b(typ)\\s+([a-zA-Z_$][\\w$]*)",
+                    "captures": {
+                        "1": {
+                            "name": "storage.type.ostrascript"
+                        },
+                        "2": {
+                            "name": "entity.name.type.ostrascript"
+                        }
+                    }
                 },
                 {
-                    "include": "#operators"
+                    "match": "(\\b[a-zA-Z_$][\\w$]*)(\\s*)(<)",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.type.ostrascript"
+                        },
+                        "3": {
+                            "name": "entity.name.function.ostrascript"
+                        }
+                    }
                 },
                 {
-                    "include": "#keywords"
-                },
-                {
-                    "include": "#constants"
+                    "match": ">",
+                    "name": "entity.name.function.ostrascript"
                 }
             ]
         }
