@@ -89,6 +89,8 @@ pozdrav("Chachare") pyco
 | `buchtoklyce` | `Object.keys`
 | `buchtohody` | `Object.values`
 | `rozemel` | `...`
+| `uvnitr` | `in`
+| `zeseznamu` | `of`
 
 ## Logické operátory a hodnoty
 

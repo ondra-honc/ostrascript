@@ -2,7 +2,7 @@
   "name": "ostrascript",
   "displayName": "Ostrascript",
   "publisher": "ondrej-honc",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "icon": "icon.png",
   "license": "MIT",
   "keywords": [
@@ -63,12 +63,12 @@
     ],
     "semanticTokenModifiers": [],
     "semanticTokenScopes": [
-      {
-        "language": "ostrascript",
-        "scopes": {
-          "type": [
-            "entity.name.type"
-          ]
+  {
+    "language": "ostrascript",
+    "scopes": {
+          "type": ["entity.name.type"],
+          "function": ["entity.name.function"],
+          "parameter": ["variable.parameter"]
         }
       }
     ],

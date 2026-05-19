@@ -5,6 +5,7 @@ const legend = new vscode.SemanticTokensLegend(
   [],
 );
 const diagnostics = vscode.languages.createDiagnosticCollection("ostrascript");
+const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const ostrascriptDocs: { [key: string]: string } = {
   kalfas: "Definuje novou funkci. Tady se míchá kód.",
@@ -101,14 +102,15 @@ export function activate(context: vscode.ExtensionContext) {
           if (variableMatch) {
             const variableName = variableMatch[1];
             const documentText = document.getText();
-            
+
+            const safeVar = escapeRegex(variableName);
             const typeRegex = new RegExp(
-                `(?:konstatuj|toz|let)\\s+${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)` + 
-                `|` +
-                `\\b${variableName}\\s*:\\s*([\\w\\d\\[\\]]+)`, 
-                "g"
+              `(?:konstatuj|toz|let)\\s+${safeVar}\\s*:\\s*([\\w\\d\\[\\]]+)` +
+              `|` +
+              `\\b${safeVar}\\s*:\\s*([\\w\\d\\[\\]]+)`,
+              "g"
             );
-            
+
             let match;
             let varType: string | null = null;
             while ((match = typeRegex.exec(documentText)) !== null) {
@@ -132,13 +134,13 @@ export function activate(context: vscode.ExtensionContext) {
         const seenVariables = new Set<string>();
 
         while ((varMatch = varRegex.exec(text)) !== null) {
-            const varName = varMatch[1];
-            if (!seenVariables.has(varName)) {
-                const item = new vscode.CompletionItem(varName, vscode.CompletionItemKind.Variable);
-                item.detail = "Tvoje promenna/typ z Ostrascriptu";
-                completions.push(item);
-                seenVariables.add(varName);
-            }
+          const varName = varMatch[1];
+          if (!seenVariables.has(varName)) {
+            const item = new vscode.CompletionItem(varName, vscode.CompletionItemKind.Variable);
+            item.detail = "Tvoje promenna/typ z Ostrascriptu";
+            completions.push(item);
+            seenVariables.add(varName);
+          }
         }
 
         for (const key in ostrascriptDocs) {
@@ -146,7 +148,7 @@ export function activate(context: vscode.ExtensionContext) {
           item.documentation = new vscode.MarkdownString(ostrascriptDocs[key]);
           completions.push(item);
         }
-        
+
         return completions;
       },
     },
@@ -158,9 +160,9 @@ export function activate(context: vscode.ExtensionContext) {
     const completions: vscode.CompletionItem[] = [];
     const arrayMethods = ["preber", "premapuj", "vsecky", "prypychni"];
     arrayMethods.forEach(m => {
-        const item = new vscode.CompletionItem(m, vscode.CompletionItemKind.Method);
-        item.documentation = new vscode.MarkdownString(ostrascriptDocs[m]);
-        completions.push(item);
+      const item = new vscode.CompletionItem(m, vscode.CompletionItemKind.Method);
+      item.documentation = new vscode.MarkdownString(ostrascriptDocs[m]);
+      completions.push(item);
     });
     return completions;
   }
@@ -175,39 +177,39 @@ export function activate(context: vscode.ExtensionContext) {
     const missingTypeRegex = /\b(konstatuj|toz)\s+([a-zA-Z_$][\w$]*)\s*=(?![^=]*:)/g;
     let missingTypeMatch;
     while ((missingTypeMatch = missingTypeRegex.exec(text))) {
-        const keyword = missingTypeMatch[1];
-        const varName = missingTypeMatch[2];
-        const line = document.positionAt(missingTypeMatch.index).line;
-        const range = new vscode.Range(
-            line, 
-            missingTypeMatch[0].indexOf(varName), 
-            line, 
-            missingTypeMatch[0].indexOf(varName) + varName.length
-        );
+      const keyword = missingTypeMatch[1];
+      const varName = missingTypeMatch[2];
+      const line = document.positionAt(missingTypeMatch.index).line;
+      const range = new vscode.Range(
+        line,
+        missingTypeMatch[0].indexOf(varName),
+        line,
+        missingTypeMatch[0].indexOf(varName) + varName.length
+      );
 
-        errors.push(
-            new vscode.Diagnostic(
-              range,
-              `Chachare, u promenne '${varName}' ti chybi typova anotace! Pridej tam dvojtecku a typ.`,
-              vscode.DiagnosticSeverity.Error,
-            ),
-        );
+      errors.push(
+        new vscode.Diagnostic(
+          range,
+          `Chachare, u promenne '${varName}' ti chybi typova anotace! Pridej tam dvojtecku a typ.`,
+          vscode.DiagnosticSeverity.Error,
+        ),
+      );
     }
-    
+
     for (let i = 0; i < document.lineCount; i++) {
-        if (i === currentLine) continue;
-        const line = document.lineAt(i);
-        const rawText = line.text;
-        const trimmed = rawText.trim();
-        if (!trimmed || trimmed.endsWith("{") || trimmed.endsWith("}") || trimmed.endsWith("[") || trimmed.endsWith("]") || trimmed.endsWith(",") || trimmed.startsWith("//")) {
-            continue;
-        }
-        const codePart = rawText.split("//")[0].trim();
-        if (codePart.length > 0 && !codePart.endsWith("pyco")) {
-            const endPos = line.firstNonWhitespaceCharacterIndex + codePart.length;
-            const range = new vscode.Range(i, Math.max(0, endPos - 4), i, endPos);
-            errors.push(new vscode.Diagnostic(range, "Chachare, chybi ti 'pyco' na konci radku! Bez toho to nerubne.", vscode.DiagnosticSeverity.Error));
-        }
+      if (i === currentLine) continue;
+      const line = document.lineAt(i);
+      const rawText = line.text;
+      const trimmed = rawText.trim();
+      if (!trimmed || trimmed.endsWith("{") || trimmed.endsWith("}") || trimmed.endsWith("[") || trimmed.endsWith("]") || trimmed.endsWith(",") || trimmed.startsWith("//")) {
+        continue;
+      }
+      const codePart = rawText.split("//")[0].trim();
+      if (codePart.length > 0 && !codePart.endsWith("pyco")) {
+        const endPos = line.firstNonWhitespaceCharacterIndex + codePart.length;
+        const range = new vscode.Range(i, Math.max(0, endPos - 4), i, endPos);
+        errors.push(new vscode.Diagnostic(range, "Chachare, chybi ti 'pyco' na konci radku! Bez toho to nerubne.", vscode.DiagnosticSeverity.Error));
+      }
     }
 
     diagnostics.set(document.uri, errors);
@@ -253,7 +255,7 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
     const lines = text.split(/\r?\n/);
     lines.forEach((lineText, lineNum) => {
       definedFunctionNames.forEach((funcName) => {
-        const regex = new RegExp(`\\b${funcName}\\b`, "g");
+        const regex = new RegExp(`\\b${escapeRegex(funcName)}\\b`, "g");
         let usageMatch: RegExpExecArray | null;
         while ((usageMatch = regex.exec(lineText))) {
           const isAlreadyTokenized = allTokens.some(
@@ -326,30 +328,150 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
       });
     }
 
-    const otherTypeRegex = /:\s*([\w\d\[\]<>]+)/g;
-    let otherTypeMatch: RegExpExecArray | null;
-    while ((otherTypeMatch = otherTypeRegex.exec(text))) {
-        const typeName = otherTypeMatch[1];
-        const typeIndex = otherTypeMatch.index + otherTypeMatch[0].indexOf(typeName);
-        const typeRange = new vscode.Range(
-            document.positionAt(typeIndex),
-            document.positionAt(typeIndex + typeName.length)
-        );
+    const typeDefRegex = /\btyp\s+([a-zA-Z_$][\w$]*)/g;
+    let typeDefMatch: RegExpExecArray | null;
+    while ((typeDefMatch = typeDefRegex.exec(text)) !== null) {
+      const typeName = typeDefMatch[1];
+      const typeIndex =
+        typeDefMatch.index + typeDefMatch[0].indexOf(typeName);
+      const typeRange = new vscode.Range(
+        document.positionAt(typeIndex),
+        document.positionAt(typeIndex + typeName.length),
+      );
 
-        const isDuplicate = allTokens.some(t => t.range.isEqual(typeRange));
+      const isDuplicate = allTokens.some((t) => t.range.isEqual(typeRange));
+      if (!isDuplicate) {
+        allTokens.push({
+          range: typeRange,
+          type: "type",
+        });
+      }
+    }
 
-        if (!isDuplicate) {
-            allTokens.push({
-                range: typeRange,
-                type: "type",
-            });
+    const pushTypeToken = (start: number, end: number) => {
+      const typeRange = new vscode.Range(
+        document.positionAt(start),
+        document.positionAt(end),
+      );
+
+      const isDuplicate = allTokens.some((t) => t.range.isEqual(typeRange));
+      if (!isDuplicate) {
+        allTokens.push({
+          range: typeRange,
+          type: "type",
+        });
+      }
+    };
+
+    const scanTypeAfterColon = (text: string, startIdx: number) => {
+      let i = startIdx;
+
+      // skip whitespace
+      while (i < text.length && /\s/.test(text[i])) i++;
+
+      // must start with identifier
+      if (!/[A-Za-z_$]/.test(text[i])) return;
+
+      const typeStart = i;
+      let depth = 0;
+      let seenAny = false;
+
+      while (i < text.length) {
+        const ch = text[i];
+
+        if (ch === "\n" || ch === "\r") {
+          break;
         }
+
+        if (/[A-Za-z0-9_$]/.test(ch)) {
+          seenAny = true;
+          i++;
+          continue;
+        }
+
+        if (ch === "<") {
+          depth++;
+          seenAny = true;
+          i++;
+          continue;
+        }
+
+        if (ch === ">") {
+          depth--;
+          i++;
+          if (depth < 0) break;
+          continue;
+        }
+
+        if (ch === "[" && text[i + 1] === "]") {
+          i += 2;
+          continue;
+        }
+
+        if (/\s/.test(ch)) {
+          if (depth === 0) break;
+          i++;
+          continue;
+        }
+        if (ch === ",") {
+          i++;
+          continue;
+        }
+
+        if (depth === 0) break;
+        i++;
+      }
+
+      if (seenAny) {
+        pushTypeToken(typeStart, i);
+      }
+    };
+
+
+    // --- scan all type positions ---
+    const varTypeRegex = /\b(?:konstatuj|toz)\s+[A-Za-z_$][\w$]*\s*:\s*/g;
+    let varTypeMatch: RegExpExecArray | null;
+    while ((varTypeMatch = varTypeRegex.exec(text)) !== null) {
+      scanTypeAfterColon(text, varTypeMatch.index + varTypeMatch[0].length);
+    }
+
+    const typeAliasRegex = /\btyp\s+[A-Za-z_$][\w$]*\s*=\s*/g;
+    let typeAliasMatch: RegExpExecArray | null;
+    while ((typeAliasMatch = typeAliasRegex.exec(text)) !== null) {
+      scanTypeAfterColon(text, typeAliasMatch.index + typeAliasMatch[0].length);
+    }
+
+    const typeBlockRegex = /\btyp\s+[A-Za-z_$][\w$]*\s*=\s*\{/g;
+    let typeBlockMatch: RegExpExecArray | null;
+
+    while ((typeBlockMatch = typeBlockRegex.exec(text)) !== null) {
+      let i = typeBlockMatch.index + typeBlockMatch[0].length;
+      let depth = 1;
+
+      while (i < text.length && depth > 0) {
+        const ch = text[i];
+
+        if (ch === "{") depth++;
+        if (ch === "}") depth--;
+
+        if (depth === 1 && ch === ":") {
+          scanTypeAfterColon(text, i + 1);
+        }
+
+        i++;
+      }
+    }
+
+    const returnTypeRegex = /\)\s*:\s*/g;
+    let returnTypeMatch: RegExpExecArray | null;
+    while ((returnTypeMatch = returnTypeRegex.exec(text)) !== null) {
+      scanTypeAfterColon(text, returnTypeMatch.index + returnTypeMatch[0].length);
     }
 
 
     lines.forEach((lineText, lineNum) => {
       definedParams.forEach((paramName) => {
-        const regex = new RegExp(`\\b${paramName}\\b`, "g");
+        const regex = new RegExp(`\\b${escapeRegex(paramName)}\\b`, "g");
         let m;
         while ((m = regex.exec(lineText)) !== null) {
           const isDuplicate = allTokens.some(
@@ -372,7 +494,7 @@ class OstraSemanticProvider implements vscode.DocumentSemanticTokensProvider {
         }
       });
     });
-    
+
     allTokens.sort((a, b) => {
       if (a.range.start.line !== b.range.start.line)
         return a.range.start.line - b.range.start.line;

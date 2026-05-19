@@ -58,7 +58,8 @@ Tento plugin přidává podporu pro syntaxi a barvičky pro soubory `.os`.
 | `buchtoklyce` | `Object.keys`
 | `buchtohody` | `Object.values`
 | `rozemel` | `...`
-
+| `uvnitr` | `in`
+| `zeseznamu` | `of`
 
 ## 🛠️ Logické operátory
 

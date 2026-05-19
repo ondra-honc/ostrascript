@@ -1,7 +1,6 @@
 # Changelog
 
 ## [1.0.0] - 13-05-2026
-
 ### Added
 - Initial release of Ostrascript language support.
 - Semantic syntax highlighting for functions, parameters, and types.
@@ -16,3 +15,7 @@
 ### Added
 - New words
 - Arrow operator color
+
+## [1.3.0] - 19-05-2026
+### Bugfix
+- Improved semantic type highlighting: generics (including nested) and types inside type-alias blocks are now colored correctly.
