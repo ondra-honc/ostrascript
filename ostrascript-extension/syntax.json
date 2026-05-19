@@ -129,11 +129,11 @@
             "patterns": [
                 {
                     "name": "keyword.control.ostrascript",
-                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta|jebnato|dalsy|pro|vrat|mensy|mensyrovno|vetsy|vetsyrovno)\\b"
+                    "match": "\\b(kaj|inak|kajinak|fajront|rubat|zkus|chujstym|fofrem|pockej|smrt|naposled|mrdni|novabuchta|jebnato|dalsy|pro|vrat|mensy|mensyrovno|vetsy|vetsyrovno|pro)\\b"
                 },
                 {
                     "name": "storage.type.ostrascript",
-                    "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser|slyb|vythani|posly|tohle|zrus|typni|vlastnost)\\b"
+                    "match": "\\b(kalfas|toz|konstatuj|tryda|typ|pruser|slyb|vythani|posly|tohle|zrus|typni|vlastnost|uvnitr|zeseznamu|buchta)\\b"
                 },
                 {
                     "name": "keyword.operator.logical.ostrascript",

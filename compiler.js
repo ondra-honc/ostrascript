@@ -28,6 +28,8 @@ const mapping = {
   
     'toz': 'let',
     'konstatuj': 'const',
+    'zeseznamu': 'of',
+    'uvnitr': 'in',
 
     'laces': 'true',
     'bokdepa': 'false',

@@ -65,6 +65,8 @@ const ostrascriptDocs: { [key: string]: string } = {
   mensyrovno: "<=",
   vetsy: ">",
   vetsyrovno: "=<",
+  zeseznamu: "of",
+  uvnitr: "in"
 };
 
 export function activate(context: vscode.ExtensionContext) {
